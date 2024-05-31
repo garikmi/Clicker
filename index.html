@@ -1,0 +1,44 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="styles.css" />
+    </head>
+    <body class="p-2 bg-slate-950 text-slate-50">
+        <div class="w-44">
+            <div class="flex justify-between items-center">
+                <h1 class="font-mono font-bold text-2xl italic grow-0">Clicker</h1>
+
+                <label class="switch grow-0">
+                    <input id="tgl" type="checkbox">
+                    <span class="slider round"></span>
+                </label>
+            </div>
+
+            <div class="flex gap-x-1.5 mt-2">
+                <select id="slctTag" class="bg-slate-950">
+                    <option value="id">ID</option>
+                    <option value="class">CLASS</option>
+                </select>
+            </div>
+            
+            <div id="btnIdCntr" class="relative">
+                <input id="btnId" type="text" name="lname" placeholder="button id or class"
+                    class="px-2 w-full rounded-lg border-2 border-slate-600 bg-slate-950 placeholder:text-slate-400 mt-1"/>
+            </div>
+
+            <div class="mt-3 grid grid-cols-6 align-middle gap-y-0.5">
+                <button  id="rfrshIntrvl1" type="button" class="bg-green-500 w-7 h-7 rounded-full font-bold" >1s</button>
+                <button  id="rfrshIntrvl2" type="button" class="bg-green-500 w-7 h-7 rounded-full font-bold" >2s</button>
+                <button  id="rfrshIntrvl3" type="button" class="bg-green-500 w-7 h-7 rounded-full font-bold" >3s</button>
+                <button  id="rfrshIntrvl4" type="button" class="bg-green-500 w-7 h-7 rounded-full font-bold" >4s</button>
+                <button  id="rfrshIntrvl5" type="button" class="bg-green-500 w-7 h-7 rounded-full font-bold" >5s</button>
+                <button id="rfrshIntrvl10" type="button" class="bg-green-500 w-7 h-7 rounded-full font-bold">10s</button>
+                <button id="rfrshIntrvl20" type="button" class="bg-green-500 w-7 h-7 rounded-full font-bold">20s</button>
+                <button id="rfrshIntrvl30" type="button" class="bg-green-500 w-7 h-7 rounded-full font-bold">30s</button>
+                <button id="rfrshIntrvl60" type="button" class="bg-green-500 w-7 h-7 rounded-full font-bold">60s</button>
+                <input id="rfrshIntrvlInpt" type="text" name="lname" maxlength="3" value="10"
+                    class="px-1 text-center w-14 h-7 rounded-full border-2 border-green-500 bg-green-950"/>
+            </div>
+        </div>
+        <script src="index.js"></script>
+    </body>
+</html>

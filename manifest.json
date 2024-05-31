@@ -1,0 +1,14 @@
+{
+    "manifest_version": 3,
+    "name": "Clicker",
+    "description": "Extension that clicks a button at a set interval.",
+    "version": "1.0",
+    "permissions": ["tabs", "activeTab", "scripting", "storage"],
+    "action": {
+        "default_popup": "index.html",
+        "default_icon": "icon.png"
+    },
+    "background": {
+        "service_worker": "service-worker.js"
+    }
+}
