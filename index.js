@@ -67,6 +67,28 @@ document.getElementById("btnId").addEventListener("input", () => {
     getTags();
 });
 
+document.getElementById("turnOffAll").addEventListener("click", () => {
+    chrome.tabs.query({}, (tabs) => {
+        chrome.storage.session.get(null).then((result) => {
+            tabs.map(tab => {
+                let xTab = result[tab.url]
+                if(xTab) {
+                    console.log(xTab);
+                    chrome.storage.session.set({
+                        [tab.url]: {
+                            select: xTab.select,
+                            tag: xTab.tag,
+                            enabled: false,
+                            interval: xTab.refreshInterval,
+                        },
+                    });
+                    refreshUI();
+                }
+            });
+        });
+    });
+});
+
 //document.getElementById("btnId").addEventListener("keydown", (e) => {
 //    let currentFocus = 0;
 //    if(e.keyCode == 38) { // up
@@ -305,7 +327,6 @@ function runPageScript() {
                     elements = [buttons[i].id];
 
                 for(let x = 0; x < elements.length; x++) {
-                    // if(elements[x].includes(query) && !elmntsColctn.includes(elements[x]))
                     if(elements[x].toLowerCase().includes(query) && !caseInsensitiveIncludes(elmntsColctn, elements[x]))
                         elmntsColctn.push(elements[x]);
                 }
@@ -323,8 +344,6 @@ function runPageScript() {
             chrome.storage.session.get(url).then((result) => {
                 const obj = result[url];
                 if(typeof obj !== "undefined" && obj.enabled) {
-                    console.log(`${getTimestamp()} - (${timestamp} + ${obj.interval} = ${timestamp + obj.interval}) = ${getTimestamp() - (timestamp + obj.interval)}`);
-
                     sendMessage({
                         setBadge: {
                             title: (getTimestamp() - (timestamp + obj.interval)).toString(),
